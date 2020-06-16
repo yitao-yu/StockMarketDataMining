@@ -30,9 +30,11 @@ I made used of severl data dimensions from TA-lib, including several types of si
 
 Of course all of those signals were designed to capture some trends, and most of them only were triggered when a rise or bounce is already happening. But will those trends lasts for a longer period, say 5 or 20 days, producing enough profit that is significantly different from tumbling of the market? Are they robust against tumbling(Noise in the price)? 
 
-I performed FPGrowth(A Frequent Pattern Mining algorithm) on Itemset of signals on signals that has a future 5 day profit larger than 8 percent(which accounts for 6 percent of total data); and Itemset of signals that has a future 20 day gain larger than 20 percent; and Itemset with no significant future gain in both period(That says, it includes those that have a lose). 
+I performed FPGrowth(A Frequent Pattern Mining algorithm) on dataset(in forms of itemset data) of signals on those that has a future 5 day profit larger than 8 percent(which accounts for 6 percent of total data); dataset of signals that has a future 20 day gain larger than 20 percent; and data with no significant future gain in both period(That says, it includes those that have a lose). 
 
-FPMining on NoGain Itemset is performed with a lower frequent threshold, 0.1, while on Gain5 or Gain20 Itemsets, 0.3. All of those Frequent Patterns(signals and combination of signals) in gain are Frequent on NoGain Itemsets. However, after I sorted the patterns using Precision, the top ten patterns improved accuracy by at least 2 percent(8%) than random guess(2%), which is bad, but not terrible if you assume the rest of the stocks are random walking. 
+FPMining on NoGain dataset is performed with a lower frequent threshold, 0.1, while on Gain5 or Gain20 datasets, 0.3. 
+
+All of those Frequent Itemsets(signals and combination of signals) in gain are Frequent on NoGain datasets. However, after I sorted the patterns using Precision, the top ten patterns improved accuracy by at least 2 percent(8%) than random guess(2%), which is bad, but not terrible if you assume the rest of the stocks are random walking. 
 
 Precision is defined: 
 Precision = TP/(TP+FP)
