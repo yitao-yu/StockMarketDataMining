@@ -27,7 +27,7 @@ I performed FPGrowth(A Frequent Pattern Mining algorithm) on Itemset of signals 
 
 FPMining on NoGain Itemset is performed with a lower frequent threshold, 0.1, while on Gain5 or Gain20 Itemsets, 0.3. All of those Frequent Patterns(signals and combination of signals) in gain are Frequent on NoGain Itemsets. However, after I sorted the patterns using Precision, the top ten patterns improved accuracy by at least 2 percent(8%) than random guess(2%), which is bad, but not terrible if you assume the rest of the stocks are random walking. 
 
-Precision is defined: $(TP)/(TP+FP)$
+Precision is defined: $/((TP)/(TP+FP)/)$
 
 Are they Random walking though? I later made a significant loss(5 day) itemset.
 I find that all of the moving average signals from the pattern we mined above has a frequency difference larger than 5% in the loss5 itemset dataset than in the gain5 dataset. This apply to SAR as well, but not STOCH(both appeared in some combinations). The frequency difference is in favor of us if we use those signals to profit. 
