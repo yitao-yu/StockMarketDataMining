@@ -28,7 +28,7 @@ I performed FPGrowth(A Frequent Pattern Mining algorithm) on Itemset of signals 
 FPMining on NoGain Itemset is performed with a lower frequent threshold, 0.1, while on Gain5 or Gain20 Itemsets, 0.3. All of those Frequent Patterns(signals and combination of signals) in gain are Frequent on NoGain Itemsets. However, after I sorted the patterns using Precision, the top ten patterns improved accuracy by at least 2 percent(8%) than random guess(2%), which is bad, but not terrible if you assume the rest of the stocks are random walking. 
 
 Precision is defined: 
-<img src="http://latex.codecogs.com/gif.latex? Precision = \frac{TP}{TP+FP}" />
+<img src="http://latex.codecogs.com/gif.latex? Precision = /(\frac{TP}{TP+FP}/)" />
 
 作者：Deep Reader
 链接：https://www.zhihu.com/question/26887527/answer/43166739
