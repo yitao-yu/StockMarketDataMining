@@ -3,9 +3,9 @@ China stock market data mining. Used stocks Data in 2018-2019. Explored several 
 
 ShangHai-Shenzhen 300 Index is an Index that covers 300 stocks in China, whose total Market Cap is roughly 80% of the Shanghai-Shenzhen Market. 
 
-To clarify, the list of stocks I'm using is 2020-6 HS300 stocks, which is available(the current list and weights of stocks). The weight as well. The HS300 stocks only changes twice a year and doesn't change too much. 
+To clarify, the components and weight of component of HS-300 I'm using is 2020-6 HS300 stocks, which is the only version I can find(even in tushare Pro). The HS300 stocks' component only changes twice a year and doesn't change its component too much. 
 
-During 2018-2019, the HS300 Index in general experienced a decline, followed by a rise, then after April 2020, the Index experienced some tumbling. The experts claims that at the end of 2019, the market was ready to embrace a new round of rise, however the COVID-19 outbreak in Januaray,2020 changed that. During the time period, the behavior of the Index is quite typical. 
+During 2018-2019, the HS300 Index in general experienced a decline, followed by a rise, then after April 2020, the Index experienced some tumbling. The experts claims that at the end of 2019, the market was ready to embrace a new round of rise, however the COVID-19 outbreak in Januaray,2020 changed that. Covering all three forms of trend, the time period is quite typical. (The fall, the rise, and the tumbling before another rise/fall)
 
 # Data Dependency
 I used several open data sources.
@@ -23,10 +23,12 @@ I also used some library popular for stock market data.
 
 TA-lib http://mrjbq7.github.io/ta-lib/
 
-# FPMiningSignals
-I made used of severl data dimensions from TA-lib, including several types of signals(EMA, DEMA) based on moving averages using different combination of Parameters(fast: 4,6,9; slow: 12, 26); Momentem Signals such as MACD(which is actually also based on Moving Average),STOCH and SAR. 
+FPGrowth is performed using mlxtend implementation http://rasbt.github.io/mlxtend/user_guide/frequent_patterns/fpgrowth/
 
-Of course all of those signals are designed to capture some trends, and most of them only happens when a rise or bounce is already happening. But will those trends lasts for 5 or 20 days, producing enough profit that is significantly different from tumbling of the market? Are they robust against tumbling? 
+# FPMiningSignals
+I made used of severl data dimensions from TA-lib, including several types of signals(EMA, DEMA) based on moving averages using different combination of Parameters(fast: 4,6,9; slow: 12, 26); Momentem Signals such as MACD(which is actually also based on Moving Average),STOCH and SAR. All was calculated using TA-lib. 
+
+Of course all of those signals were designed to capture some trends, and most of them only were triggered when a rise or bounce is already happening. But will those trends lasts for a longer period, say 5 or 20 days, producing enough profit that is significantly different from tumbling of the market? Are they robust against tumbling(Noise in the price)? 
 
 I performed FPGrowth(A Frequent Pattern Mining algorithm) on Itemset of signals on signals that has a future 5 day profit larger than 8 percent(which accounts for 6 percent of total data); and Itemset of signals that has a future 20 day gain larger than 20 percent; and Itemset with no significant future gain in both period(That says, it includes those that have a lose). 
 
@@ -35,12 +37,13 @@ FPMining on NoGain Itemset is performed with a lower frequent threshold, 0.1, wh
 Precision is defined: 
 Precision = TP/(TP+FP)
 
-Are they Random walking though? I later made a significant loss(5 day) itemset.
-I find that all of the moving average signals from the pattern we mined above has a frequency difference larger than 5% in the loss5 itemset dataset than in the gain5 dataset. This apply to SAR as well, but not STOCH(both appeared in some combinations). The frequency difference is in favor of us if we use those signals to profit. 
+Are they Random walking though(Will the selection actually increase the frequency of significant loss?)? I later made a significant loss(5 day loss > 0.08) dataset and perform.
+
+I find that all of the moving average signals from the pattern we mined above has a frequency difference larger than 5% in the loss5 itemset dataset than in the gain5 dataset. This apply to SAR as well, but not STOCH. The frequency difference is in favor of us if we use those signals to profit. 
 
 This is not a complete justification but can give us some taste. It might suggests that we should make use of those signals and they might help us identify trends that will last for some period(5 days). 
 
-Why is there such a high False Positive rate though? It might be tumbling triggers the signals while followed by some fall of stock prices: the trend is not Clear. 
+Why is there such a high False Positive rate(FP) though? It might be that the signals based on moving average was triggered a lot in their most powerless situation: the tumbling. 
 
 # Signals that were mined useful, consider use them together on stocks with clear trends.
 
@@ -49,17 +52,19 @@ EMA4-EMA12; EMA6-EMA12; EMA9-EMA12;EMA9-EMA26;SAR
 # ExamineOrderFlow
 
 The Idea of Order Flow is examined. 
-I can only Access to 2019 tick data so that's all I used. 
+I only have access to 2019(actually after 2018-12-12) tick data so that's all I used. 
 The plan was to make a plot using hs300 data throughout 2019(x-axis is the porportion of days in a month that has a positive comittee; while y-axis is the percentage of increase in the next month)
 
 The function took forever to run so I manually interrupt it after it finished roughly 15 stocks. The graph was not satisfying: No correlation at all. It is just two independent normal distributions. 
-I later tried the 15 stocks that is currently weighted the most in HS300, each of them have a weight larger than 1%. The pattern shown was the same. 
-This Data Dimension will not help us to capture a one month trend in the future. How much people are willing to bid in this month will not affect how the price will behave in the future month.
 
-Be aware that there's a sharp increase of the Index before April in 2019, while for the rest of year a tumbling. So that's the reason why the mean of increase is larger than 0. 
+I later tried the 15 stocks that is currently weighted the most in HS300, each of them have a weight larger than 1%. The pattern shown was the same, two independent normal distribution.
+
+This Data Dimension will not help us to capture a one month trend in the future. How much people are willing to bid in this month will not affect how the price will behave in the future month. 
+
+Be aware that there's a sharp increase of the HS300 Index before April in 2019, while for the rest of year a tumbling. So that's the reason why the mean of increase is larger than 0, it's because the stock market throughout 2019 is not weak. 
 
 # Currently Working On...
-I'm currently writing a strategy on JQQuant that will make use of those findings. 
+I'm currently writing a strategy on JQQuant that will make use of those findings. I'm thinking about using another use of Order Flow: Identify the prices where people bid the most in the last month, that's usually where most people find the price too low and see an opportunity. We might be able to find stocks that's more likely to rise by looking at current relative position of stock prices to those prices.
 
 # Claim
 I'm not responsible for ANY loss caused by operation in any market according to any mined results that was mentioned here. 
