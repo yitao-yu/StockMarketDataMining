@@ -8,14 +8,19 @@ To clarify, the list of stocks I'm using is 2020-6 HS300 stocks, which is availa
 During 2018-2019, the HS300 Index in general experienced a decline, followed by a rise, then after April 2020, the Index experienced some tumbling. The experts claims that at the end of 2019, the market was ready to embrace a new round of rise, however the COVID-19 outbreak in Januaray,2020 changed that. During the time period, the behavior of the Index is quite typical. 
 
 # Data Dependency
-I used several open data sources. /n 
+I used several open data sources.
+
 TuShare http://tushare.org/index.html
+
 BaoStock www.baostock.com
+
 AKShare https://www.akshare.xyz/zh_CN/latest/index.html
 
 # Data Processing Tools
 I definitely made use of popular libraries such as pandas, numpy and matplotlib.
+
 I also used some library popular for stock market data.
+
 TA-lib http://mrjbq7.github.io/ta-lib/
 
 # FPMiningSignals
