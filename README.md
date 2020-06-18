@@ -65,9 +65,14 @@ This Data Dimension will not help us to capture a one month trend in the future.
 
 Be aware that there's a sharp increase of the HS300 Index before April in 2019, while for the rest of year a tumbling. So that's the reason why the mean of increase is larger than 0, it's because the stock market throughout 2019 is not weak. 
 
-# Currently Working On...
-I'm currently writing a strategy on JQQuant that will make use of those findings. I'm thinking about using another use of Order Flow: Identify the prices where people bid the most in the last month, that's usually where most people find the price too low and see an opportunity. We might be able to find stocks that's more likely to rise by looking at current relative position of stock prices to those prices.
+# Done
+I'm wrote a strategy on JoinQuant that will make use of those findings. I explored another use of Order Flow: Identify the prices where people bid the most in the last month, that's usually where most people find the price too low and see an opportunity. We might be able to find stocks that's more likely to rise by looking at current relative position of stock prices to those prices.
 
+Results:(The blue line is the profit of my strategy, while the red one Index)
+
+2018-2020.6: https://www.joinquant.com/view/community/detail/e2657a1cb8813f35b594965d7aca2f4f
+
+2015-2017: https://www.joinquant.com/view/community/detail/2e25a9233015320e99b334e15fe86d26
 # Claim
 I'm not responsible for ANY loss caused by operation in any market according to any mined results that was mentioned here. 
 This is a personal project a college student DID FOR FUN and NOT ANY guidance to ANY exchanger.
