@@ -73,6 +73,11 @@ Results:(The blue line is the profit of my strategy, while the red one Index)
 2018-2020.6: https://www.joinquant.com/view/community/detail/e2657a1cb8813f35b594965d7aca2f4f
 
 2015-2017: https://www.joinquant.com/view/community/detail/2e25a9233015320e99b334e15fe86d26
+
+Another Strategy(Strategy v2):
+
+2018.11-2020: https://www.joinquant.com/view/community/detail/526a35f9ef9bf0a9b05336d11b986dd3
+
 # Claim
 I'm not responsible for ANY loss caused by operation in any market according to any mined results that was mentioned here. 
 This is a personal project a college student DID FOR FUN and NOT ANY guidance to ANY exchanger.
