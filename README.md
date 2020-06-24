@@ -74,7 +74,7 @@ Results:(The blue line is the profit of my strategy, while the red one Index)
 
 2015-2017: https://www.joinquant.com/view/community/detail/2e25a9233015320e99b334e15fe86d26
 
-Another Strategy(Strategy v2):
+Another Strategy(Strategy v2##THIS ONE BEATS THE INDEX！！):
 
 2018.11-2020: https://www.joinquant.com/view/community/detail/526a35f9ef9bf0a9b05336d11b986dd3
 
